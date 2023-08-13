@@ -1,0 +1,322 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --main-black-color: #283618;
+  --sec-background-color: #fffdf2;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fefae0;
+}
+.container {
+  margin: 10px auto;
+}
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+}
+.game-info .game-name {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--main-black-color);
+}
+.category span {
+  text-transform: capitalize;
+  color: #e91e63;
+  font-weight: bold;
+}
+hr {
+  border: 1px solid #eae0d5;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hangman-draw {
+  flex: 1;
+  background-color: var(--sec-background-color);
+  padding: 20px;
+  min-height: 350px;
+}
+.hangman-draw .the-draw {
+  position: relative;
+  margin: auto;
+  border-bottom: 4px solid var(--main-black-color);
+  width: 60px;
+  height: 300px;
+  left: -80px;
+  display: none;
+}
+.hangman-draw .the-stand {
+  background-color: var(--main-black-color);
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  left: 28px;
+  bottom: -2px;
+  display: none;
+}
+.hangman-draw .the-hang {
+  display: none;
+}
+.hangman-draw .the-hang::before,
+.hangman-draw .the-hang::after {
+  content: "";
+  background-color: var(--main-black-color);
+  position: absolute;
+  top: 20px;
+}
+.hangman-draw .the-hang::before {
+  height: 4px;
+  width: 100px;
+  left: 28px;
+}
+.hangman-draw .the-hang::after {
+  width: 4px;
+  height: 40px;
+  left: 128px;
+}
+.hangman-draw .the-rope {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px dashed var(--main-black-color);
+  position: absolute;
+  left: 95px;
+  top: 56px;
+  display: none;
+}
+.hangman-draw .the-man .head {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid var(--main-black-color);
+  position: absolute;
+  left: 105px;
+  top: 66px;
+  display: none;
+}
+.hangman-draw .the-man .body {
+  width: 4px;
+  height: 120px;
+  background-color: var(--main-black-color);
+  position: absolute;
+  left: 128px;
+  top: 114px;
+  display: none;
+}
+.hangman-draw .the-man .arms {
+  display: none;
+}
+.hangman-draw .the-man .arms::before,
+.hangman-draw .the-man .arms::after {
+  content: "";
+  background-color: var(--main-black-color);
+  width: 4px;
+  height: 50px;
+  position: absolute;
+  top: 130px;
+}
+.hangman-draw .the-man .arms::before {
+  transform: rotate(-40deg);
+  left: 112px;
+}
+.hangman-draw .the-man .arms::after {
+  transform: rotate(40deg);
+  left: 144px;
+}
+.hangman-draw .the-man .legs {
+  display: none;
+}
+.hangman-draw .the-man .legs::before,
+.hangman-draw .the-man .legs::after {
+  content: "";
+  background-color: var(--main-black-color);
+  width: 4px;
+  height: 50px;
+  position: absolute;
+  top: 227px;
+}
+.hangman-draw .the-man .legs::before {
+  transform: rotate(40deg);
+  left: 112px;
+}
+.hangman-draw .the-man .legs::after {
+  transform: rotate(-40deg);
+  left: 144px;
+}
+.hangman-draw.wrong-1 .the-draw {
+  display: block;
+}
+.hangman-draw.wrong-2 .the-stand {
+  display: block;
+}
+.hangman-draw.wrong-3 .the-hang {
+  display: block;
+}
+.hangman-draw.wrong-4 .the-rope {
+  display: block;
+}
+.hangman-draw.wrong-5 .head {
+  display: block;
+}
+.hangman-draw.wrong-6 .body {
+  display: block;
+}
+.hangman-draw.wrong-7 .arms {
+  display: block;
+}
+.hangman-draw.wrong-8 .legs {
+  display: block;
+}
+.row .letters.finished {
+  pointer-events: none;
+}
+.row .letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+  gap: 10px;
+  height: fit-content;
+}
+.row .letters .letter-box {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: #bc6c25;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  text-transform: capitalize;
+  transition: 0.2s;
+}
+.row .letters .letter-box:hover {
+  background-color: #dda15e;
+}
+.row .letters .letter-box.clicked {
+  background-color: #6f6f6f;
+  opacity: 0.2;
+  pointer-events: none;
+}
+.guessed-letters {
+  background-color: var(--sec-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 0;
+  min-height: 70px;
+}
+.guessed-letters span {
+  width: 50px;
+  height: 50px;
+  background-color: #606c38;
+  display: inline-flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  font-size: 25px;
+  border-bottom: 3px solid var(--main-black-color);
+  text-transform: capitalize;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.guessed-letters span.with-space {
+  background: none;
+  border-bottom: none;
+}
+.guessed-letters span.with-space::before {
+  content: "-";
+  color: var(--main-black-color);
+  font-size: 50px;
+}
+.result-popup {
+  width: 60%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #dda15e;
+  color: #ffffff;
+  font-size: 22px;
+  border: 4px solid var(--main-black-color);
+  padding: 20px;
+  text-align: center;
+}
+.result-popup .play-again {
+  background-color: var(--main-black-color);
+  padding: 5px 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.result-popup .play-again:hover {
+  background-color: black;
+}
+.info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: #d5dfb2;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.info img {
+  width: 16px;
+}
+.info-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #dda15e;
+  color: #ffffff;
+  font-size: 1rem;
+  border: 4px solid var(--main-black-color);
+  padding: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+.info-popup span:not(.close-popup) {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.info-popup span.close-popup {
+  background-color: var(--main-black-color);
+  padding: 5px 10px;
+  margin-top: 20px;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.info-popup span.close-popup:hover {
+  background-color: black;
+}
+.container.help {
+  pointer-events: none;
+}
+.result-img {
+  width: 100px;
+}
