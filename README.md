@@ -8,4 +8,4 @@ Project colors palette:
 https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25
 
 ### Live-Demo
-https://cu-da.github.io/Hangman-Mini-Game
+https://mHe4am.github.io/Hangman-Mini-Game
