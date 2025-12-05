@@ -122,15 +122,15 @@ getData().then((categories) => {
     if (result === true) {
       let text;
       if (mistakesNum === 0) {
-        text = `Win!, You got it with ${mistakesNum} mistakes.\nThat's the best score ever!`;
+        text = `Win!, You got it with ${mistakesNum} mistake(s).\nThat's the best score ever!`;
       } else if (mistakesNum === 1 || mistakesNum === 2) {
-        text = `Win!, You got it after ${mistakesNum} mistakes.\nYou look like a pro!`;
+        text = `Win!, You got it after ${mistakesNum} mistake(s).\nYou look like a pro!`;
       } else if (mistakesNum === 3 || mistakesNum === 4) {
-        text = `Win!, You got it after ${mistakesNum} mistakes.\nIt seems that you know some tricks already!`;
+        text = `Win!, You got it after ${mistakesNum} mistake(s).\nIt seems that you know some tricks already!`;
       } else if (mistakesNum === 5 || mistakesNum === 6) {
-        text = `Win!, You got it after ${mistakesNum} mistakes.\nYou struggled a little bit but you got it!`;
+        text = `Win!, You got it after ${mistakesNum} mistake(s).\nYou struggled a little bit but you got it!`;
       } else if (mistakesNum === 7) {
-        text = `Win!, You got it after ${mistakesNum} mistakes.\nYou barely lost it!`;
+        text = `Win!, You got it after ${mistakesNum} mistake(s).\nYou barely lost it!`;
       }
       img.setAttribute("src", "./imgs/win.png");
       div.appendChild(img);
